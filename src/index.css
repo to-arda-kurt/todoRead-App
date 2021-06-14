@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-size: 2.8rem;
+}
+
 .Header {
   height: 90px;
   display: flex;
@@ -53,4 +57,24 @@ a {
   font-size: 1.6rem;
   text-align: center;
   color: #ff6600;
+}
+
+.Alert p {
+  padding: 1rem;
+}
+
+.SectionHeader {
+  padding: 1rem 0;
+  border-top: solid 1px black;
+}
+
+.SectionBooks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.BookCard {
+  border: 1px solid black;
+  padding: 0.5rem;
 }

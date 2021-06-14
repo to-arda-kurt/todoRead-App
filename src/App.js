@@ -14,7 +14,7 @@ function App() {
         <Route exact path="/add-book" component={AddBook} />
         <Route path="/" component={ReadList} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
