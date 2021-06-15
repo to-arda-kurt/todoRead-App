@@ -11,8 +11,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  width: 900px;
+#root {
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -22,6 +22,10 @@ a {
 
 h1 {
   font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
 }
 
 .Header {
@@ -36,6 +40,7 @@ h1 {
   font-family: 'Schoolbell', cursive;
   font-size: 2.6rem;
   color: #ff6600;
+  padding: 1rem;
 }
 
 .Navigation {
@@ -72,9 +77,48 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .BookCard {
-  border: 1px solid black;
-  padding: 0.5rem;
+  padding: 1rem;
+  min-width: 215px;
+  flex: 0 0 25%;
+}
+
+.BookCardImage {
+  overflow: hidden;
+}
+
+.BookCardImage img {
+  box-shadow: 4px 4px #ff6600;
+  max-width: 175px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.BookCardInfo {
+  padding: 1rem 0;
+}
+
+.BookCardInfoExtra {
+  border-top: 1px solid black;
+  position: relative;
+  padding: 1rem 0;
+  font-size: 1.6em;
+}
+
+.BookCardInfoExtra::before {
+  content: '';
+  width: 50%;
+  height: 1.1px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  top: -1px;
+}
+
+.BookCardInfoExtra span {
+  font-style: italic;
 }

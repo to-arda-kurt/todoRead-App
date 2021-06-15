@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <Alert message={`Alert Messages`} show />
+      <Alert message={`Alert Messages`} />
       <Switch>
         <Route exact path="/add-book" component={AddBook} />
         <Route path="/" component={ReadList} />

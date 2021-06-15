@@ -1,9 +1,10 @@
 import React from 'react';
 
-const BookCardInfo = ({ name }) => {
+const BookCardInfo = ({ name, author }) => {
   return (
-    <div>
-      <p>Info</p>
+    <div className="BookCardInfo">
+      <h3>{name}</h3>
+      <p>{author}</p>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HOME } from '../../constants/routes';
+import { HOME, ADDBOOK } from '../../constants/routes';
 import { Link } from 'react-router-dom';
 
 const Navigation = () => {
@@ -10,7 +10,7 @@ const Navigation = () => {
           <Link to={HOME.link}>Read List</Link>
         </li>
         <li>
-          <Link to={HOME.link}>Add Book</Link>
+          <Link to={ADDBOOK.link}>Add Book</Link>
         </li>
         <li>
           <Link to={HOME.link}>Find Book</Link>

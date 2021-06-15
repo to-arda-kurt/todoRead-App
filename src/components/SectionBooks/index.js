@@ -7,9 +7,7 @@ const SectionBooks = () => {
   return (
     <div className="SectionBooks">
       {BOOKS.map((book, index) => (
-        <div key={index}>
-          <BookCard book={book} />
-        </div>
+        <BookCard book={book} key={index} />
       ))}
     </div>
   );
