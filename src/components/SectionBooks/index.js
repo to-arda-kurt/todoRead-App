@@ -1,12 +1,16 @@
-import React from 'react';
-import { BOOKS } from '../../constants/data';
+import React, { useContext } from 'react';
 import BookCard from './BookCard';
+import BookContext from '../../context/books/booksContext';
 
 const SectionBooks = () => {
-  console.log(BOOKS);
+  const booksContext = useContext(BookContext);
+
+  const { books } = booksContext;
+
+  console.log(books);
   return (
     <div className="SectionBooks">
-      {BOOKS.map((book, index) => (
+      {books.map((book, index) => (
         <BookCard book={book} key={index} />
       ))}
     </div>

@@ -20,6 +20,21 @@ a {
   text-decoration: none;
 }
 
+a:link {
+  color: #151515;
+}
+
+a:visited {
+  color: #151515;
+}
+
+a:active {
+  color: #ff6600;
+}
+
+a:hover {
+  color: #ff6600;
+}
 h1 {
   font-size: 2.8rem;
 }
@@ -84,6 +99,16 @@ h3 {
   padding: 1rem;
   min-width: 215px;
   flex: 0 0 25%;
+  transition: all 0.2s ease-in-out;
+}
+
+.BookCard:hover {
+  transform: scale(1.1);
+}
+
+.BookCard-Wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .BookCardImage {
@@ -121,4 +146,23 @@ h3 {
 
 .BookCardInfoExtra span {
   font-style: italic;
+}
+
+.Book-Button {
+  font-size: 1.4rem;
+  color: #ff6600 !important;
+  border: 1px solid #ff6600;
+  margin: 1rem 0;
+  padding: 0.5rem 3rem;
+  text-align: center;
+  width: fit-content;
+  align-self: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.Book-Button:hover {
+  background-color: #151515;
+  border: none;
+  color: white !important;
+  transform: scale(1.1);
 }
