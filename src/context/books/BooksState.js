@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import BooksContext from './booksContext';
 import bookReducer from './bookReducer';
-import {} from '../types';
+import { GET_BOOK } from '../types';
 
 const BooksState = (props) => {
   const initialState = {
@@ -14,7 +14,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -29,7 +29,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -44,7 +44,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -59,7 +59,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -74,7 +74,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -89,7 +89,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -104,7 +104,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -119,7 +119,7 @@ const BooksState = (props) => {
         language: 'English',
         page: '224',
         date: '',
-        notes: '',
+        notes: 'Note area',
         isRead: false,
         isReading: true,
         cover:
@@ -127,14 +127,25 @@ const BooksState = (props) => {
         seoUrl: 'book-name-4',
       },
     ],
+    book: {},
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
 
   //Functions Will Be Here
+  const getBook = (seoUrl) => {
+    let selectiveBook = state.books.find((book) => book.seoUrl === seoUrl);
+
+    dispatch({
+      type: GET_BOOK,
+      payload: selectiveBook,
+    });
+  };
 
   return (
-    <BooksContext.Provider value={{ books: state.books }}>
+    <BooksContext.Provider
+      value={{ books: state.books, book: state.book, getBook }}
+    >
       {props.children}
     </BooksContext.Provider>
   );

@@ -18,7 +18,7 @@ const BookCard = ({ book }) => {
           language={language}
         />
         <Link to={`/book/${seoUrl}`} className="Book-Button">
-          Book Page
+          Details
         </Link>
       </div>
     </div>

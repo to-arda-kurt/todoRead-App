@@ -43,6 +43,37 @@ h3 {
   font-size: 1.6rem;
 }
 
+.t1 {
+  font-size: 1.6rem;
+}
+
+.t2 {
+  font-size: 2rem;
+}
+.t3 {
+  font-size: 3rem;
+}
+
+.t4 {
+  font-size: 4rem;
+}
+
+.mx1 {
+  margin: 0rem 1rem;
+}
+
+.my1 {
+  margin: 1rem 0;
+}
+
+.bt1 {
+  border-top: 1px solid black;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
 .Header {
   height: 90px;
   display: flex;
@@ -149,9 +180,10 @@ h3 {
 }
 
 .Book-Button {
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #ff6600 !important;
   border: 1px solid #ff6600;
+  border-radius: 5px;
   margin: 1rem 0;
   padding: 0.5rem 3rem;
   text-align: center;
@@ -165,4 +197,46 @@ h3 {
   border: none;
   color: white !important;
   transform: scale(1.1);
+}
+
+.book-page-section {
+  margin: 1rem 0;
+}
+
+.book-container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.book-page-left {
+  padding: 0 1rem;
+  flex: 1 1;
+}
+
+.book-page-right {
+  flex: 1 1;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-page-left-wrapper {
+}
+
+.book-page-right-wrapper {
+}
+
+.book-page-cover {
+  box-shadow: 4px 4px #ff6600;
+}
+
+.book-page-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addbook-form {
+  display: flex;
+  flex-direction: column;
 }

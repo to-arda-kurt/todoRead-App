@@ -7,7 +7,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
@@ -22,7 +22,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
@@ -37,7 +37,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
@@ -52,7 +52,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
@@ -67,7 +67,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
@@ -82,7 +82,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
@@ -97,7 +97,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
@@ -112,7 +112,7 @@ export const BOOKS = [
     language: 'English',
     page: '224',
     date: '',
-    notes: '',
+    notes: 'Note area',
     isRead: false,
     isReading: true,
     cover:
