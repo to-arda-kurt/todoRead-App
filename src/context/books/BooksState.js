@@ -3,6 +3,7 @@ import BooksContext from './booksContext';
 import bookReducer from './bookReducer';
 import { ADD_BOOK, GET_BOOK } from '../types';
 import { v4 as uuidv4 } from 'uuid';
+import { paramCase } from 'param-case';
 
 const BooksState = (props) => {
   const initialState = {
@@ -145,17 +146,19 @@ const BooksState = (props) => {
 
   const addBook = (book) => {
     let _id = uuidv4();
-    const seoUrl =  
-    console.log(book);
-    let newBook = book;
+    let seoUrl = paramCase(book.name);
+    let newBook = { ...book, _id, seoUrl };
+    console.log(newBook);
+
     dispatch({
       type: ADD_BOOK,
       payload: newBook,
     });
   };
+
   return (
     <BooksContext.Provider
-      value={{ books: state.books, book: state.book, getBook }}
+      value={{ books: state.books, book: state.book, getBook, addBook }}
     >
       {props.children}
     </BooksContext.Provider>
