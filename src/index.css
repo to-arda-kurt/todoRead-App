@@ -42,7 +42,23 @@ h1 {
 h3 {
   font-size: 1.6rem;
 }
-
+label {
+  padding: 2rem 0;
+}
+input,
+textarea {
+  border: none;
+  font-size: 2.6rem;
+  padding: 2rem;
+  width: 100%;
+  border-radius: 10px;
+}
+input[type='checkbox'] {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  padding: 2rem;
+}
 .t1 {
   font-size: 1.6rem;
 }
@@ -239,4 +255,27 @@ h3 {
 .addbook-form {
   display: flex;
   flex-direction: column;
+  background-color: #ff6600;
+  border: 1px solid #ff6600;
+  border-radius: 10px;
+}
+
+.form-item {
+  color: white;
+  font-size: 2.6rem;
+  padding: 1rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form-val-msg {
+  font-weight: 800;
+  font-size: 1.6rem;
+  font-style: italic;
+}
+
+.fw {
+  width: 50%;
+  padding: 10px;
 }

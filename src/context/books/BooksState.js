@@ -1,7 +1,8 @@
 import { useReducer } from 'react';
 import BooksContext from './booksContext';
 import bookReducer from './bookReducer';
-import { GET_BOOK } from '../types';
+import { ADD_BOOK, GET_BOOK } from '../types';
+import { v4 as uuidv4 } from 'uuid';
 
 const BooksState = (props) => {
   const initialState = {
@@ -142,6 +143,16 @@ const BooksState = (props) => {
     });
   };
 
+  const addBook = (book) => {
+    let _id = uuidv4();
+    const seoUrl =  
+    console.log(book);
+    let newBook = book;
+    dispatch({
+      type: ADD_BOOK,
+      payload: newBook,
+    });
+  };
   return (
     <BooksContext.Provider
       value={{ books: state.books, book: state.book, getBook }}

@@ -1,4 +1,4 @@
-import { GET_BOOK } from '../types';
+import { ADD_BOOK, GET_BOOK } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
@@ -7,6 +7,11 @@ export default (state, action) => {
       return {
         ...state,
         book: action.payload,
+      };
+    case ADD_BOOK:
+      return {
+        ...state,
+        books: [...state.books, action.payload],
       };
     default:
       return state;
