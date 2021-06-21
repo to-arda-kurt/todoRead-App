@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import BookCard from './BookCard';
 import BookContext from '../../context/books/booksContext';
 
@@ -7,10 +7,16 @@ const SectionBooks = () => {
 
   const { books } = booksContext;
 
-  console.log(books);
+  const [readingList, setReadingList] = useState(books);
+
+  useEffect(() => {
+    setReadingList(books);
+  }, [books]);
+
+  console.log(setReadingList);
   return (
     <div className="SectionBooks">
-      {books.map((book, index) => (
+      {readingList.map((book, index) => (
         <BookCard book={book} key={index} />
       ))}
     </div>

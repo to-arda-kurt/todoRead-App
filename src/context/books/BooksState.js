@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import BooksContext from './booksContext';
 import bookReducer from './bookReducer';
-import { ADD_BOOK, GET_BOOK } from '../types';
+import { ADD_BOOK, GET_BOOK, UPDATE_BOOK, UPDATE_BOOKS } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 import { paramCase } from 'param-case';
 
@@ -21,7 +21,7 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-1',
+        seoUrl: 'book-name-1251',
       },
       {
         _id: '123145512',
@@ -36,7 +36,7 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-2',
+        seoUrl: 'book-name-1512',
       },
       {
         _id: '4152112213',
@@ -51,7 +51,7 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-3',
+        seoUrl: 'book-name-15123',
       },
       {
         _id: '5123112321',
@@ -66,7 +66,7 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-4',
+        seoUrl: 'book-name-125',
       },
       {
         _id: '10006546',
@@ -81,7 +81,7 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-1',
+        seoUrl: 'book-name-1151',
       },
       {
         _id: '123145512',
@@ -96,7 +96,7 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-2',
+        seoUrl: 'book-name-12',
       },
       {
         _id: '4152112213',
@@ -111,7 +111,7 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-3',
+        seoUrl: 'book-name-111245',
       },
       {
         _id: '5123112321',
@@ -126,21 +126,33 @@ const BooksState = (props) => {
         isReading: true,
         cover:
           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-        seoUrl: 'book-name-4',
+        seoUrl: 'book-name-315t2',
       },
     ],
-    book: {},
+    activeBook: {
+      _id: '',
+      name: '',
+      author: '',
+      publisher: '',
+      language: '',
+      page: '',
+      date: '',
+      notes: '',
+      isRead: null,
+      isReading: null,
+      cover: 'null',
+      seoUrl: '',
+    },
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
 
-  //Functions Will Be Here
   const getBook = (seoUrl) => {
-    let selectiveBook = state.books.find((book) => book.seoUrl === seoUrl);
+    let selectedBook = state.books.find((book) => book.seoUrl === seoUrl);
 
     dispatch({
       type: GET_BOOK,
-      payload: selectiveBook,
+      payload: selectedBook,
     });
   };
 
@@ -156,9 +168,24 @@ const BooksState = (props) => {
     });
   };
 
+  const updateBook = (book) => {
+    dispatch({ type: UPDATE_BOOK, payload: book });
+  };
+
+  const updateBooks = (book) => {
+    dispatch({ type: UPDATE_BOOKS, payload: book });
+  };
+
   return (
     <BooksContext.Provider
-      value={{ books: state.books, book: state.book, getBook, addBook }}
+      value={{
+        books: state.books,
+        activeBook: state.activeBook,
+        getBook,
+        addBook,
+        updateBook,
+        updateBooks,
+      }}
     >
       {props.children}
     </BooksContext.Provider>

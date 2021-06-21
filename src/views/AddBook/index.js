@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+
 import Alert from '../../components/Alert';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -61,7 +61,7 @@ const AddBook = ({ history }) => {
   useEffect(() => {
     if (alert) {
       setTimeout(() => {
-        history.push(`/`);
+        history.push(`/book/${paramCase(formik.values.name)}`);
       }, 2000);
     }
   }, [alert, history]);
@@ -72,7 +72,7 @@ const AddBook = ({ history }) => {
       {!alert ? (
         <form onSubmit={formik.handleSubmit} className="addbook-form">
           <div className="form-item">
-            <label htmlFor="name">Book Name</label>
+            <label classNamhtmlFor="name">Book Name</label>
             <input
               autoFocus
               id="name"
@@ -232,7 +232,7 @@ const AddBook = ({ history }) => {
         </form>
       ) : (
         <>
-          <p>Redirecting your book page</p>
+          <h2 style={{ textAlign: 'center' }}>Redirecting your book page</h2>
         </>
       )}
     </>
@@ -240,17 +240,3 @@ const AddBook = ({ history }) => {
 };
 
 export default AddBook;
-
-//          _id: '10006546',
-//         name: 'Book Name 1',
-//         author: 'Author',
-//         publisher: 'Publisher',
-//         language: 'English',
-//         page: '224',
-//         date: '',
-//         notes: 'Note area',
-//         isRead: false,
-//         isReading: true,
-//         cover:
-//           'https://images-eu.ssl-images-amazon.com/images/I/41n3hGOYYUL._SY291_BO1,204,203,200_QL40_ML2_.jpg',
-//         seoUrl: 'book-name-1',
