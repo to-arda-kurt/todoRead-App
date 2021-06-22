@@ -8,25 +8,32 @@ import { paramCase } from 'param-case';
 import SectionHeader from '../../components/SectionHeader';
 import BookContext from '../../context/books/booksContext';
 
-const AddBook = ({ history }) => {
+const EditBook = ({ history }) => {
   const booksContext = useContext(BookContext);
-  const { addBook } = booksContext;
+  const { activeBook, getBookbyId, updateBooks } = booksContext;
+  // WHEN REFRESH ASSIGN ACTIVE BOOK FROM ID PARAMS
+  const bookId = new URLSearchParams(document.location.search).get('id');
+
+  useEffect(() => {
+    getBookbyId(bookId);
+  }, [activeBook, bookId]);
 
   const [alert, setAlert] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      author: '',
-      publisher: '',
-      language: '',
-      page: '',
-      date: '',
-      notes: '',
+      name: activeBook.name,
+      author: activeBook.author,
+      publisher: activeBook.publisher,
+      language: activeBook.language,
+      page: activeBook.page,
+      date: activeBook.date,
+      notes: activeBook.notes,
       isRead: false,
-      isReading: true,
-      cover: '',
+      isReading: false,
+      cover: activeBook.cover,
     },
+    enableReinitialize: true,
     validationSchema: Yup.object({
       name: Yup.string()
         .min(2, 'Must be minimum 2 characters')
@@ -53,7 +60,7 @@ const AddBook = ({ history }) => {
         .required('Required'),
     }),
     onSubmit: (values) => {
-      addBook(values);
+      updateBooks({ _id: bookId, ...values, seoUrl: paramCase(values.name) });
       setAlert(true);
     },
   });
@@ -64,13 +71,14 @@ const AddBook = ({ history }) => {
         history.push(`/book/${paramCase(formik.values.name)}`);
       }, 2000);
     }
-  }, [alert, history, formik.values.name]);
+  }, [alert, history, formik.values.name, activeBook]);
+
   return (
     <>
-      <SectionHeader header="Add your next book" />
+      <SectionHeader header="Edit Your Book" />
       <Alert focus message="Your Book Saved!" show={alert} />
       {!alert ? (
-        <form onSubmit={formik.handleSubmit} className="addbook-form">
+        <form onSubmit={formik.handleSubmit} className="edit-form">
           <div className="form-item">
             <label className="name">Book Name</label>
             <input
@@ -178,49 +186,56 @@ const AddBook = ({ history }) => {
               <div className="form-val-msg">{formik.errors.notes}</div>
             ) : null}
           </div>
-          <div className="form-item">
-            <label htmlFor="isRead">Have you read this book?</label>
-            <input
-              id="isRead"
-              name="isRead"
-              type="checkbox"
-              placeholder="The Metamorphosis"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.isRead}
-            />{' '}
-            {formik.values.isRead ? <span>Yes</span> : <span>No</span>}
-            {formik.touched.isRead && formik.errors.isRead ? (
-              <div className="form-val-msg">{formik.errors.isRead}</div>
-            ) : null}
-            <label htmlFor="isReading">Are you reading now?</label>
+          <div className="options-wrapper">
+            <div className="form-item">
+              <label htmlFor="isRead">Have you read this book?</label>
+              <input
+                id="isRead"
+                name="isRead"
+                type="checkbox"
+                placeholder="The Metamorphosis"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.isRead}
+              />{' '}
+              {formik.values.isRead ? <span>Yes</span> : <span>No</span>}
+              {formik.touched.isRead && formik.errors.isRead ? (
+                <div className="form-val-msg">{formik.errors.isRead}</div>
+              ) : null}
+            </div>
+            <div className="form-item">
+              <label htmlFor="isReading">Are you reading now?</label>
+              <input
+                checked={formik.values.isReading}
+                id="isReading"
+                name="isReading"
+                type="checkbox"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.isReading}
+              />{' '}
+              {formik.values.isReading ? <span>Yes</span> : <span>No</span>}
+              {formik.touched.isReading && formik.errors.isRead ? (
+                <div className="form-val-msg">{formik.errors.isReading}</div>
+              ) : null}
+            </div>
           </div>
-          <div className="form-item">
-            <input
-              checked={formik.values.isReading}
-              id="isReading"
-              name="isReading"
-              type="checkbox"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.isReading}
-            />{' '}
-            {formik.values.isReading ? <span>Yes</span> : <span>No</span>}
-            {formik.touched.isReading && formik.errors.isRead ? (
-              <div className="form-val-msg">{formik.errors.isReading}</div>
-            ) : null}
-          </div>
-          <div className="form-item">
-            <label htmlFor="cover">Cover Image(URL)</label>
-            <input
-              id="cover"
-              name="cover"
-              type="text"
-              placeholder="Cover Image URL"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.cover}
-            />
+          <div className="image-wrapper">
+            <div className="image-preview">
+              <img src={formik.values.cover} alt="" />
+            </div>
+            <div className="form-item image-preview-url">
+              <label htmlFor="cover">Cover Image(URL)</label>
+              <input
+                id="cover"
+                name="cover"
+                type="text"
+                placeholder="Cover Image URL"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.cover}
+              />
+            </div>
           </div>
           {formik.touched.cover && formik.errors.cover ? (
             <div>{formik.errors.cover}</div>
@@ -238,4 +253,4 @@ const AddBook = ({ history }) => {
   );
 };
 
-export default AddBook;
+export default EditBook;

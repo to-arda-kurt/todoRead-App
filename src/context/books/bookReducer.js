@@ -8,6 +8,7 @@ export default (state, action) => {
         ...state,
         activeBook: action.payload,
       };
+
     case ADD_BOOK:
       return {
         ...state,

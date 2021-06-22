@@ -1,12 +1,12 @@
 import React from 'react';
-import SectionHeader from '../../components/SectionHeader';
 import SectionBooks from '../../components/SectionBooks';
+import ReadSummary from '../../components/ReadSummary';
 
 const ReadList = () => {
   return (
     <>
       <section className="ReadList">
-        <SectionHeader header="The Books you’re planning to read..." />
+        <ReadSummary />
         <SectionBooks />
       </section>
     </>

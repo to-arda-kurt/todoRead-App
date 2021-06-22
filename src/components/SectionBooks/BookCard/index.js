@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
   console.log(book);
-  const { name, author, publisher, page, language, cover, seoUrl } = book;
+  const { name, author, publisher, page, language, cover, seoUrl, isRead } =
+    book;
   return (
     <div className="BookCard">
       <div className="BookCard-Wrapper">

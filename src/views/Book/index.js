@@ -1,21 +1,20 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Alert from '../../components/Alert';
 import SectionHeader from '../../components/SectionHeader';
 import BookContext from '../../context/books/booksContext';
-import { UPDATE_BOOK } from '../../context/types';
 
 const Book = ({ match }) => {
   const booksContext = useContext(BookContext);
 
   const { getBook, activeBook, updateBook, updateBooks } = booksContext;
-  const [selectedBook, setSelectedBook] = useState(activeBook);
 
   useEffect(() => {
     getBook(match.params.seoUrl);
-    setSelectedBook(activeBook);
-  });
+  }, [activeBook]);
 
   const {
+    _id,
     name,
     author,
     publisher,
@@ -28,7 +27,12 @@ const Book = ({ match }) => {
   } = activeBook;
 
   const updateHandler = () => {
-    const holderBook = { ...activeBook, isRead: !isRead };
+    const controlReading = isReading ? false : true;
+    const holderBook = {
+      ...activeBook,
+      isRead: !isRead,
+      isReading: controlReading,
+    };
     updateBook(holderBook);
     updateBooks(holderBook);
   };
@@ -69,7 +73,9 @@ const Book = ({ match }) => {
                 </button>
               </div>
               <div className="mx1">
-                <button className="Book-Button ">Edit</button>
+                <Link to={`/book/edit?id=${_id}`} className="Book-Button">
+                  Edit
+                </Link>
               </div>
             </div>
           </div>
