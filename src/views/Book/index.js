@@ -11,6 +11,7 @@ const Book = ({ match }) => {
 
   useEffect(() => {
     getBook(match.params.seoUrl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeBook]);
 
   const {

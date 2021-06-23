@@ -16,6 +16,7 @@ const EditBook = ({ history }) => {
 
   useEffect(() => {
     getBookbyId(bookId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeBook, bookId]);
 
   const [alert, setAlert] = useState(false);
